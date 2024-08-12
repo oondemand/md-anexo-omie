@@ -24,12 +24,13 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     // Passa a secretKey nos headers da requisição
-    const response = await msAppOonDemand.post("/login", { login, senha: password }, {
-      headers: { secretkey: secretKey }
-    });
+    const response = await msAppOonDemand.post("/login", { login, senha: password });
 
     if (response.status === 200) {
       req.user = response.data.usuario;
+      req.headers.secretkey = secretKey;
+      delete req.query.secretKey;
+
       next();
     } else {
       res.status(response.status).json(response.data);

@@ -25,7 +25,7 @@ const incluir = async (appKey, appSecret, tabela, id, nomeArquivo, tipoArquivo, 
     const response = await apiOmie.post("geral/anexo/", body);
     return response.data;
   } catch (error) {
-    console.log(error.response.data);
+    console.log("anexoService.incluir: ", error); 
     throw "Erro ao incluir anexo: " + error;
   }
 };

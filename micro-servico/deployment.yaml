@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - name: md-anexo-omie-ms-container
-        image: registry.digitalocean.com/oondemand/md-anexo-omie-ms:0.0.1
+        image: registry.digitalocean.com/oondemand/md-anexo-omie-ms:0.0.5
         ports:
         - containerPort: 3000
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "0.5"
+            memory: "256Mi"
+            cpu: "0.25"
           limits:
             memory: "1024Mi"
             cpu: "1"
