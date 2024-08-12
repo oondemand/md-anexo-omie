@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: md-anexo-omie-ms-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: md-anexo-omie-ms
+  template:
+    metadata:
+      labels:
+        app: md-anexo-omie-ms
+    spec:
+      containers:
+      - name: md-anexo-omie-ms-container
+        image: registry.digitalocean.com/oondemand/md-anexo-omie-ms:0.0.1
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "0.5"
+          limits:
+            memory: "1024Mi"
+            cpu: "1"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: md-anexo-omie-ms-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: md-anexo-omie-ms
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 3000

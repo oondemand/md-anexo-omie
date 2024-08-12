@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const helmet = require("helmet");
-const path = require("path");
 const bodyParser = require("body-parser");
 
 const logger = require("./config/logger");
@@ -20,7 +19,6 @@ const start = async () => {
   app.use(morgan("dev"));
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
-  app.use(express.static(path.join(__dirname, "public")));
 
   app.use("/", indexRouter);
 

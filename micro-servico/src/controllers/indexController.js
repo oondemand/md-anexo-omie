@@ -1,7 +1,7 @@
 const anexoService = require("../services/omie/anexoService");
 
-const test = async (req, res) => {
-  res.send({ message: "md-anexo-omie funcionando..." });
+const test = (req, res) => {
+  res.send({ message: `${process.env.SERVICE_NAME} funcionando...` });
 };
 
 const incluirAnexo = async (req, res) => {
