@@ -31,7 +31,7 @@ kind: Service
 metadata:
   name: md-anexo-omie-ms-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: md-anexo-omie-ms
   ports:
